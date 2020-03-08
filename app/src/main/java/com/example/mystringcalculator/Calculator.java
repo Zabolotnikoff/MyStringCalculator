@@ -317,11 +317,22 @@ public class Calculator {
                         }
 //                        if (formulaCh[i-1] == '(') formulaCh[i] = '~';
                     }
+                case ')':
+                    if (i > 0) {
+                        switch (formulaCh[i-1]) {
+                            case '~':
+                            case '+':
+                            case '-':
+                            case '*':
+                            case '/':
+                                ERROR = true;
+                                return -7777777;
+                        }
+                    }
                 case '+':
                 case '*':
                 case '/':
                 case '(':
-                case ')':
                     getOperation (formulaCh[i++]);
                     break;
 // Тернарный.  Можно объединить с предыдущим блоком. Но версию без тернарного не сохранил, поэтому, на всякий случай, отделил его
